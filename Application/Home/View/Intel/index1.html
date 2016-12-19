@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>云老虎服务商平台</title>
+	<style type="text/css">
+		html,body{padding:0;margin:0;height:100%;font-size:16px;background:#FFF;font-family:'Source Sans Pro';}
+		.loading_box {width: 100%; margin-top: 10%; text-align: center; }
+		.logo { position: relative; display: block; width: 100%; height: 60px; margin-bottom: -80px; z-index: 2; }
+		/*.logo { position: relative; display: block; width: 100%; height: 100px; margin-bottom: -80px; z-index: 2; background: url(__PUBLIC__/assets/img/logo.png) no-repeat center center; background-size: 50%; }*/
+		.loading{ position: relative; display: block; width: 100%; height: 324px; background: url(__PUBLIC__/assets/img/loading.gif) no-repeat center center; background-size: 50%; z-index: 1; }
+		.text{position: relative; color:#009fe9; margin-top:-120px;z-index: 2; font-size: 40px; }
+	</style>
+</head>
+<body>
+	<div class="loading_box">
+		<p class="logo"></p>
+		<p class="loading"></p>
+		<p class="text">智能识别中...</p>
+	</div>
+</body>
+<include file="Base:jsfile"/>
+<script type="text/javascript">
+	window.onload = function(){
+		var SystemUserSysNo = GetQueryString ("systemUserSysNo");
+        var p = document.getElementsByTagName('p');
+        var a = document.getElementsByTagName('a');
+        var WeiXin = window.navigator.userAgent.match(/MicroMessenger/i);
+        var Ali = window.navigator.userAgent.match(/AlipayClient/i);
+		var aaa = window.navigator.userAgent;
+		
+		
+		if(WeiXin == 'MicroMessenger'){
+		windows.location.href = "http://web.yunlaohu.cn/index.php/Wxpay/newpay/?systemUserSysNo="+SystemUserSysNo;
+//		location.href = "www.baidu.com";
+		}
+		if(Ali == 'AlipayClient'){
+		windows.location.href = "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2016072101648286&scope=auth_base&redirect_uri=http://web.yunlaohu.cn/index.php/Isv/index?systemUserSysNo="+SystemUserSysNo;
+		
+    
+		}
+    
+
+}
+
+</script>
+</html>

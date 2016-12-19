@@ -1,0 +1,138 @@
+body {margin:0;padding:0;font-size:12px;line-height: 1.5;font-family:"微软雅黑";color: #6C6C6C;; background:#fff;  -webkit-text-size-adjust:none;}
+header,nav,article,section,aside,footer,div,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,input,textarea,strong,table,td,tr,th{margin:0; padding:0;}
+h1,h2,h3,h4,h5,h6{font-size:12px; font-weight:normal;}
+img {border:0 none;}
+ul,ol,li {list-style-type:none;}
+input,select{vertical-align:middle;outline: none;}
+img, input {border:none;}
+b{font-weight: normal;}
+button{border:none;}
+a {text-decoration:none;}
+i{font-style:normal;}
+/*页面设置*/
+html, body {
+    position: relative;
+    height: 100%;
+    width:100%;
+}
+body { background: #EDEFF1; }
+.login-form .login-field { font-size: 18px; }
+.login-field-icon { line-height: 35px; }
+.login-form .login-field-icon{position:absolute;top:3px;left:15px; right: 0; width: 20px; font-size:18px;color:#bfc9ca;-webkit-transition:all .25s;transition:all .25s;}
+.form-control { padding: 8px 40px; border: none; font-size:18px;}
+option { font-size: 18px; }
+.swiper-container {
+    width: 100%;
+    height: 150px;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.swiper-slide img{
+	width:100%;
+	height:100%;
+}
+.swiper-container-v {
+    background: #eee;
+}
+#down,#add,#num{
+	width:25px;
+	height:25px;
+	background:#fff;
+	border:1px solid #ccc;
+	font-size: 18px;
+	display:inline-block;
+	border-radius: 4px;
+	color:#000;
+}
+#down{
+	float:left;
+	border-top-right-radius:0px;
+	border-bottom-right-radius:0px ;
+	border-right:none;
+}
+#add{
+	float:left;
+	border-top-left-radius:0px;
+	border-bottom-left-radius:0px ;
+	border-left:none;
+}
+#num{
+	width:35px;
+	font-size: 14px;
+	text-align: center;
+	line-height: 25px;
+	float:left;
+	border-radius: 0px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+}
+.title1, .title2, .title3, .title4{
+	color:#e74c3c;
+	width:50%;
+	margin-left:45px;
+	font-size: 14px;
+	margin-top:5px;
+	opacity: 0;
+}
+#allMoney{
+	font-size: 20px;
+}
+#login-total .money{
+	width:24px;
+	height:24px;
+	color:grey;
+	font-size: 24px;
+	display:inline-block;
+	
+}
+.login-form .form-group{
+	margin-bottom:12px;
+}
+.login-form {
+	padding: 15px 23px 10px;
+}
+#login-total{
+	font-size: 18px;
+	line-height: 20px;
+	color:#000;
+}
+#KDS{
+	color:#ccc;
+	border:none;
+	-webkit-appearance: none;
+	height:120%;
+	width:120%;
+	background:transparent;
+	position: relative;
+	z-index: 3;
+	top:-4px;
+}
+.form-group>span{
+	color:#ccc;
+}
+#KD .caret{
+	position: absolute;
+	right: 20px;
+	top: 16px;
+	z-index: 0;
+}
+#btn{
+	padding: 5px 19px;
+}

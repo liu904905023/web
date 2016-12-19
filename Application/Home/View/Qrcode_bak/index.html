@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>自助付款</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="<{$Think.const.QR_CSS_PATH}>/bootstrap.css" rel="stylesheet" />
+        <style>
+            html,body {
+                width: 100%;
+                height:100%;
+                overflow: hidden;
+                font-family: "微软雅黑"
+            }
+            .wxzf {
+                width: 30%;
+                position:relative;
+                left:35%;
+                z-index: -1;
+                /* 			opacity: 0.3;
+                -webkit-opacity: 0.3; */
+            }
+            .warning {
+                width: 80%;
+                margin:15px auto;
+                text-align: left;
+            }
+            #sx-table {
+                width: 100%;
+            }
+            #sx-table td {
+                height: 40px;
+                text-align: center;
+                border:1px solid #eee;
+                font-size: 18px;
+            }
+            .form-horizontal .has-feedback .form-control-feedback {
+                right:24px;
+            }
+        </style>
+        <!-- scripts -->
+        <script src="<{$Think.const.QR_JS_PATH}>/lib/jquery-latest.js"></script> 
+
+    </head>
+    <body>
+        <div class="row" style="width: 90%; margin:20% auto;">
+            <form action="<{:U('Qrcode/jsapi/')}>" method="post" class="form-horizontal" id="defaultForm">
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label"><{$result['m_name']}></label>
+                    <div class="input-group col-lg-4" style="padding:0 15px;">
+                        <input type="text" class="form-control col-xs-9" name="money" id="jine" style="text-align: right;" autofocus="autofocus"  placeholder="输入金额">
+                        <span class="input-group-addon">元</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="tips" style="padding:0 15px;"></p>
+                </div>
+                <div style="margin:20% auto; width: 100%; height: auto; position: relative;">
+                    <input type="submit" value="立即支付" class="btn btn-success" id="send" style="display: block; position: relative; width: 30%; left: 35%; " >
+                    <input type="hidden" name="merchantName" value="<{$result['m_name']}>" >
+                </div>
+            </form>
+
+        </div>
+
+        <div class="wxzf"><img src="<{$Think.const.QR_IMG_PATH}>/wxzf.png" width="100%" alt=""></div>
+
+        <script>
+            $( "#jine" ).focus();
+            var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
+            $( "#jine" ).blur( function (){
+                if ( $( "#jine" ).val() != "" && reg.test( $( this ).
+                    val() ) && $( "#jine" ).val() > 0 && $( "#jine" ).val() <=
+                    10000000 ) {
+                    $( "#jine" ).css( "border-color","green" ).css( "color",
+                        "green" );
+                    $( ".input-group-addon" ).css( "border-color","green" ).
+                        css( "color","green" );
+                    $( ".tips" ).html( "输入金额成功！" ).css( "color","green" ).
+                        removeClass( "onError" );
+
+                }
+                else {
+                    $( "#jine" ).css( "border-color","red" ).css( "color",
+                        "red" );
+                    $( "#jine" ).parent().css( "color","red" ).css( "color",
+                        "red" );
+                    $( ".input-group-addon" ).css( "border-color","red" ).css(
+                        "color","red" );
+                    $( ".tips" ).html( "请输入正确的金额！" ).css( "color","red" ).
+                        addClass( "onError" );
+                }
+            } ).keyup( function (){
+                $( this ).triggerHandler( "blur" );
+            } ).keydown( function (){
+                $( this ).triggerHandler( "blur" );
+            } ).focus( function (){
+                $( this ).triggerHandler( "blur" );
+            } );//end blur
+            $( '#send' ).click( function (){
+                $( "#jine" ).trigger( 'blur' );
+                var numError = $( '.onError' ).length;
+                if ( numError ) {
+                    return false;
+                }
+
+            } );
+
+        </script>
+
+    </body>
+</html>

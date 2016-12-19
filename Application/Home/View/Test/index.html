@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>退款</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="__PUBLIC__/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="__PUBLIC__/assets/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="__PUBLIC__/assets/css/ace.min.css" />
+  <link rel="stylesheet" href="__PUBLIC__/assets/css/shanghu.css" />
+  <link rel="stylesheet" href="__PUBLIC__/assets/css/bootstrap-datetimepicker.min.css" />
+  <!--[if IE 7]>
+  <link rel="stylesheet" href="__PUBLIC__/assets/css/font-awesome-ie7.min.css" />
+  <![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="__PUBLIC__/assets/css/ace-ie.min.css" />
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="__PUBLIC__/assets/js/html5shiv.js"></script>
+  <script src="__PUBLIC__/assets/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="navbar navbar-default" id="navbar">
+    <script type="text/javascript">try{ace.settings.check('navbar' , 'fixed')}catch(e){}</script>
+    <div class="navbar-container" id="navbar-container">
+      <div class="navbar-header pull-left">
+        <a href="index.html" class="navbar-brand">
+          <small> <i class="icon-leaf"></i>
+            云老虎商户管理系统
+          </small>
+        </a>
+      </div>
+      <div class="pull-left tenant_info">
+        用户名：
+        <a href="commercial_tenant_info.html">13866447856</a>
+      </div>
+      <div class="pull-left tenant_info2">商户名称：云老虎商户</div>
+      <div class="navbar-header pull-right" role="navigation">
+        <a href="password.html"> <i class="icon-key"></i>
+          修改密码
+        </a>
+        <a href="login.html">
+          <i class="icon-off"></i>
+          退出
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        </script>
+    <div class="main-container-inner">
+      <a class="menu-toggler" id="menu-toggler" href="index.html">
+        <span class="menu-text"></span>
+      </a>
+      <div class="sidebar" id="sidebar">
+        <script type="text/javascript">try{ace.settings.check('sidebar' , 'fixed')}catch(e){}</script>
+        <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+          <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+            <span class="btn btn-success"></span>
+            <span class="btn btn-info"></span>
+            <span class="btn btn-warning"></span>
+            <span class="btn btn-danger"></span>
+          </div>
+        </div>
+        <ul class="nav nav-list">
+          <li>
+            <a href="#" class="dropdown-toggle">
+              <i class="icon-laptop"></i>
+              <span class="menu-text">商户配置</span> <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="commercial_tenant_config.html">
+                  <i class="icon-double-angle-right"></i>
+                  微信-服务商配置
+                </a>
+              </li>
+              <li>
+                <a href="commercial_tenant_verification.html">
+                  <i class="icon-double-angle-right"></i>
+                  微信-服务商验证
+                </a>
+              </li>
+              <li>
+                <a href="commercial_tenant_alipay.html">
+                  <i class="icon-double-angle-right"></i>
+                  支付宝-服务商配置
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="dropdown-toggle">
+              <i class="icon-user"></i>
+              <span class="menu-text">员工管理</span> <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="staff_register.html">
+                  <i class="icon-double-angle-right"></i>
+                  员工注册
+                </a>
+              </li>
+              <li>
+                <a href="staff_list.html">
+                  <i class="icon-double-angle-right"></i>
+                  员工列表
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="dropdown-toggle">
+              <i class="icon-laptop"></i>
+              <span class="menu-text">交易订单</span>
+              <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="order_search_weixin.html">
+                  <i class="icon-double-angle-right"></i>
+                  微信交易订单查询
+                </a>
+              </li>
+              <li>
+                <a href="order_search_alipay.html">
+                  <i class="icon-double-angle-right"></i>
+                  支付宝交易订单查询
+                </a>
+              </li>
+              <li>
+                <a href="order_search_platform.html">
+                  <i class="icon-double-angle-right"></i>
+                  平台交易订单查询
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="active">
+            <a href="#" class="dropdown-toggle">
+              <i class="icon-info-sign"></i>
+              <span class="menu-text">退款</span>
+              <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="refund_search.html">
+                  <i class="icon-double-angle-right"></i>
+                  退款查询
+                </a>
+              </li>
+              <li class="active">
+                <a href="refund.html">
+                  <i class="icon-double-angle-right"></i>
+                  退款
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="dropdown-toggle">
+              <i class="icon-minus"></i>
+              <span class="menu-text">扫码支付</span>
+              <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="sacn_code_payment.html">
+                  <i class="icon-double-angle-right"></i>
+                  微信扫码支付
+                </a>
+              </li>
+              <li>
+                <a href="sacn_code_payment_Alipay.html">
+                  <i class="icon-double-angle-right"></i>
+                  支付宝扫码支付
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="dropdown-toggle">
+              <i class="icon-inbox"></i>
+              <span class="menu-text">商户列表</span> <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="business_list.html">
+                  <i class="icon-double-angle-right"></i>
+                  商户查询
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="dropdown-toggle">
+              <i class="icon-cogs"></i>
+              <span class="menu-text">权限分配</span>
+              <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="permission_assignment.html">
+                  <i class="icon-double-angle-right"></i>
+                  权限
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="sidebar-collapse" id="sidebar-collapse">
+          <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+        </div>
+        <script type="text/javascript">try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}</script>
+      </div>
+      <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+          <script type="text/javascript">try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}</script>
+          <ul class="breadcrumb">
+            <li>
+              <i class="icon-home home-icon"></i>
+              <a href="index.html">首页</a>
+            </li>
+            <li>员工二维码生成</li>
+          </ul>
+        </div>
+        <div class="page-content">
+          <div class="page-header">
+            <h1>员工搜索</h1>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 sx-search">
+              <form action="aaa.php" method="post" role="form">
+                <div class="clearfix"></div>
+                <div class="col-md-6 col-xs-12 mr_mab">
+                  <div class="form-group">
+                    <label class="control-label col-sm-3">员工主键</label>
+                    <div class="col-sm-9">
+                      <input type="text" id="sx-8" class="form-control" placeholder="主键编号"></div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-xs-12 mr_mab">
+                  <div class="form-group">
+                   <button type="" class="btn btn-primary"><i class="icon-search"></i>
+                      查询</button>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                  <div class="table-header">查询结果</div>
+                  <div class="col-xs-12">
+                    <div class="table-responsive">
+                      <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>姓名</th>
+                            <th>电话</th>
+                            <th>交易类型</th>
+                            <th>交易金额</th>
+                            <th>交易币种</th>
+                            <th>交注册时间</th>
+                            <th>生成二维码</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>张三</td>
+                            <td>13145678978</td>
+                            <td>微信</td>
+                            <td>58.00</td>
+                            <td>人民币</td>
+                            <td>2016-05-26</td>
+                            <td><a href="#" class="btn btn-danger btn-xs refund">生成码</a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <ul class="pagination pull-right">
+                        <li>
+                          <a href="#">«</a>
+                        </li>
+                        <li class="active">
+                          <a href="#">1</a>
+                        </li>
+                        <li>
+                          <a href="#">2</a>
+                        </li>
+                        <li>
+                          <a href="#">3</a>
+                        </li>
+                        <li>
+                          <a href="#">4</a>
+                        </li>
+                        <li>
+                          <a href="#">5</a>
+                        </li>
+                        <li>
+                          <a href="#">»</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+      <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+  </div>
+  <div class="col-xs-6 col-sm-3 pricing-box">
+    <div class="widget-box">
+      <div class="widget-header header-color-red3">
+        <h5 class="bigger lighter">生成二维码</h5>
+      </div>
+      <div class="widget-body">
+        <div class="widget-main">
+          <div class="row">
+            <div class="col-md-12 mr_mab">
+              <div class="form-group">
+                <h5 class="col-md-12">商户名称</h5>
+                <div class="col-md-12">
+                  <p class="qrcode_text">果婆婆</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mr_mab">
+              <div class="form-group">
+                <h5 class="col-md-6">付款二维码</h5>
+                <h5 class="col-md-6">核销二维码</h5>
+                <div class="col-md-6">
+                  <p class="qrcode_text">
+                    <img src="__PUBLIC__/assets/images/qrcode.png" width="150" alt=""></p>
+                </div>
+                <div class="col-md-6">
+                  <p class="qrcode_text">
+                    <img src="__PUBLIC__/assets/images/qrcode.png" width="150" alt=""></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="refund_box">
+          <a href="#" class="btn btn-default btn-refund">
+            <span>关闭</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg_black"></div>
+
+  <script src='__PUBLIC__/assets/js/jquery-2.0.3.min.js'></script>
+  <script src="__PUBLIC__/assets/js/ace-extra.min.js"></script>
+  <script src='__PUBLIC__/assets/js/jquery.mobile.custom.min.js'></script>
+  <script src="__PUBLIC__/assets/js/bootstrap.min.js"></script>
+  <script src="__PUBLIC__/assets/js/typeahead-bs2.min.js"></script>
+  <script src="__PUBLIC__/assets/js/jquery.dataTables.min.js"></script>
+  <script src="__PUBLIC__/assets/js/jquery.dataTables.bootstrap.js"></script>
+  <script src="__PUBLIC__/assets/js/ace-elements.min.js"></script>
+  <script src="__PUBLIC__/assets/js/ace.min.js"></script>
+  <script src="__PUBLIC__/assets/js/date-time/bootstrap-datetimepicker.min.js"></script>
+
+  <!-- 退款弹出 -->
+  <script>
+    $(".refund").click(function(){
+        $(".pricing-box").show(300);
+        $(".bg_black").show();
+    });
+    $(".btn-refund").click(function(){
+        $(".pricing-box").hide(300);
+        $(".bg_black").hide();
+    })
+  </script>
+</body>
+</html>

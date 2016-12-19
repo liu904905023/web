@@ -1,0 +1,190 @@
+<include file="Base:header"/>
+      <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+          <script type="text/javascript">try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}</script>
+          <ul class="breadcrumb">
+            <li>
+              <i class="icon-home home-icon"></i>
+              <a href="#">首页</a>
+            </li>
+            <li>支付二维码</li>
+          </ul>
+        </div>
+        <div class="page-content">
+          <div class="page-header">
+            <h1>支付二维码</h1>
+          </div>
+         <!-- <div class="row">
+            <div class="col-xs-12">
+              <div class="row-fluid">
+                <div class="span12">
+                  <div class="widget-box">
+                    <div class="widget-header widget-header-blue widget-header-flat">
+                      <h4 class="lighter">填写信息生成二维码<{$url2}></h4>
+                    </div>
+                    <div class="widget-body">
+                      <div class="widget-main">
+                        <div class="step-content row-fluid position-relative" id="step-container">
+                          <div class="step-pane active" id="step1">
+						  <div class="row">
+						  <div class="col-md-12">
+                            <php> if($url2!=""){</php>
+                                <!-- <div class="col-md-12">
+                                  <div class="form-group">
+                                    <div class="col-xs-12 mr_mab">
+                                      <h5>付款链接地址</h5>
+                                      <div class="over">
+                                        <p class="qrcode_text"><{$data['payurl']}></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div> -->
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <div class="col-xs-12 mr_mab">
+                                      <h5>付款二维码</h5>
+                                      <div class="over">
+                                        <p class="qrcode_text"><img src="http://web.yunlaohu.cn/index.php/Qrcode/qrcode/qrcode?url=<php> echo urlencode($url2);</php>" width="300"  alt=""></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+
+							</div>
+							<php>}</php>
+                            <form class="form-horizontal" id="validation-form" method="post" action="">
+                              <div class="row">
+
+                                
+                             
+                                        <input type="hidden" class="form-control" value="<{$Think.session.SysNO}>" id= "syskeyno" name="syskeyno" placeholder="输入主键编号" />                                
+                              
+
+								<div class="col-md-12">
+                                  <div class="form-group">
+                                    <div class="col-xs-12 mr_mab">
+                                      <label>支付金额</label>
+                                      <div class="over">
+                                        <input type="text" class="form-control" id= "payfee" name="payfee" placeholder="输入金额" />                                
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+								
+								
+                              </div>
+                              <div class="form-group">
+                                <div class="col-xs-12">
+                                  <input type="submit" class="btn btn-primary" value="确认创建"> 
+                                    
+                                </div>
+                              </div>
+                            </form>
+
+                          </div>
+
+				
+
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>-->
+			  <br>
+				<div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-12">
+                            <h5>付款二维码</h5>
+                            <div class="over">
+                                <p class="qrcode_text">
+                                    <img width="100%" src="__PUBLIC__/assets/images/click_qrcode.png" id = "PayQcode" alt=""></p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <h5>核销二维码</h5>
+                            <div class="over">
+                                <p class="qrcode_text">
+                                    <img width="100%" src="__PUBLIC__/assets/images/click_qrcode.png" id = "CheckQrcode" alt=""></p>
+                            </div>
+                        </div>
+						<div class="col-md-2 col-xs-12">
+                            <h5>删除核销二维码</h5>
+                            <div class="over">
+                                <p class="qrcode_text">
+                                    <img width="100%" src="__PUBLIC__/assets/images/click_qrcode.png" id = "DeleteCheckQrcode" alt=""></p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <h5>支付宝二维码</h5>
+                            <div class="over">
+                                <p class="qrcode_text">
+                                    <img width="100%" src="__PUBLIC__/assets/images/click_qrcode.png" id = "AliQrcode" alt=""></p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <h5>智能二维码</h5>
+                            <div class="over">
+                                <p class="qrcode_text">
+                                    <img width="100%" src="__PUBLIC__/assets/images/click_qrcode.png" id = "IntelQrcode" alt=""></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<include file="Base:jsfile"/>
+  
+<include file="Base:footer"/>
+
+<script>
+	$("#PayQcode").click(function(){
+	var path = "http://web.yunlaohu.cn/index.php/Qrcode/qrcode/qrcode?url=http://web.yunlaohu.cn/index.php/Wxpay/newpay/?systemUserSysNo="+<{$Think.session.data.SysNO}>;
+	$("#PayQcode").attr('src',path); 	
+	})
+	$("#DeleteCheckQrcode").click(function(){
+			if (this.ajaxRequest_ != undefined && this.ajaxRequest_.readyState < 4) {
+						return false;
+			}
+
+			this.ajaxRequest_ =
+			$.post("__APP__/Test/index3",{DeletClear:1},function(data){
+					var path ="http://web.yunlaohu.cn/index.php/Qrcode/qrcode?url="+data;
+					$("#DeleteCheckQrcode").attr('src',path); 
+			})
+	
+	})
+	$("#CheckQrcode").click(function(){
+
+		if (this.ajaxRequest_ != undefined && this.ajaxRequest_.readyState < 4) {
+			return false;
+		}
+		this.ajaxRequest_ =
+		$.post("__APP__/Test/index3",{},function(data){
+		var path ="http://web.yunlaohu.cn/index.php/Qrcode/qrcode/qrcode?url="+data;
+		$("#CheckQrcode").attr('src',path); 
+		});
+	})
+	$("#AliQrcode").click(function(){
+	var path = "http://web.yunlaohu.cn/index.php/Qrcode/aliqrcode?url="+<{$Think.session.data.SysNO}>;
+	$("#AliQrcode").attr('src',path); 
+	
+	
+	})
+	$("#IntelQrcode").click(function(){
+	var path = "http://web.yunlaohu.cn/index.php/Qrcode/intelqrcode?url="+<{$Think.session.data.SysNO}>;
+	$("#IntelQrcode").attr('src',path); 
+	})
+
+</script>

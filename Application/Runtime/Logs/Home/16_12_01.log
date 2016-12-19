@@ -1,0 +1,18 @@
+[ 2016-12-01T16:29:30+08:00 ] 139.214.35.194 /index.php/Weixin/weixin
+ERR: Array
+
+[ 2016-12-01T16:30:18+08:00 ] 139.214.35.194 /index.php/Weixin/weixin
+ERR: {"appid":"wx261671a6d70c4db5","mch_id":"1332680901","nonce_str":"8a5KztqsH5kf9kIH","prepay_id":"wx20161201163018006f23768d0026754156","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"1F0527633262D2578624FEAE8FDAB924","sub_mch_id":"1333915801","trade_type":"JSAPI"}
+
+[ 2016-12-01T16:31:47+08:00 ] 139.214.35.194 /index.php/Weixin/weixin
+ERR: {}
+
+[ 2016-12-01T16:41:17+08:00 ] 139.214.35.194 /index.php/Weixin/weixin
+ERR: {}
+
+[ 2016-12-01T16:51:32+08:00 ] 139.214.35.194 /index.php/Weixin/weixin
+ERR: {}
+
+[ 2016-12-01T21:14:13+08:00 ] 124.127.220.186 /register.asp
+ERR: 无法加载控制器:Register.asp
+

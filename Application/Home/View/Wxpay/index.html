@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>交易订单</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="__PUBLIC__/pay2/css/bootstrap.css"/>
+        <style>
+        html,body{width:100%;height:100%;overflow:hidden;font-family:"微软雅黑"}
+        .wxzf{ overflow: hidden; }
+            .warning{width:80%;margin:15px auto;text-align:left;}
+            #sx-table{width:100%;}
+            #sx-table td{height:40px;text-align:center;border:1px solid #eee;font-size:18px;}
+            #sx-table td input{width:100%;height:100%;overflow:hidden;}
+            .form-horizontal .has-feedback .form-control-feedback{right:24px;}
+            .sx_jp{width:100%;height:40%;position:fixed;bottom:0;background:#FFF;}
+            .sx_jp tr td{width:25%;height:60px;margin:0;border:1px solid #ccc;background:#f1f1f1; text-align: center;}
+            .sx_jp tr td .btn_nums{width:100%;height:100%;overflow:hidden;padding:0;margin:0;background:#f1f1f1;border:none;font-size:2em;box-shadow:none; border-radius: 0; color: #525252;}
+            .sx_jp tr>td:first-child{                /*border-right: 1px solid #ccc;*/}
+            .sx_jp tr>td:last-child{                /*border-left: 1px solid #ccc;*/}
+            .ywlogo { padding: 10px 0 15px 0; text-align: center;}
+            .staff { padding: 20px 0 0 0; color: #666; text-align: center; font-size: 16px }
+            .money_inp { overflow: hidden; background: #fff !important; width: 100%; border: none; padding: 20px 0; font-size: 50px; text-align: center; }
+            form { width: 100%; }
+            .tips { text-align: center; font-size: 16px; }
+            p { margin: 0 }
+            .btn_sub { height: 100%; border-radius: 0; padding: 0; margin: 0; border:0; font-size: 20px; }
+            .sx_jp tr td .btn_del {height:60px; background: url(__PUBLIC__/pay2/images/btn_del.png) center center no-repeat #f1f1f1; background-size: 40px; border:none;}
+            .sx_jp tr td .btn_keyboard {height:60px; background: url(__PUBLIC__/pay2/images/btn_keyboard.png) center center no-repeat #f1f1f1; background-size: 40px; border:none;margin-top:4px;}
+            .form-control { border: none !important }
+            .form-control input { border:none !important; }
+            input::-webkit-input-placeholder {
+                color:    #ccc !important;
+            }
+            input:-moz-placeholder {
+                color:    #ccc !important;
+            }
+        </style>
+        <!-- scripts -->
+        
+    </head>
+    <body>
+        <form action="__APP__/Wxpay/jsapi" id="defaultForm" method="post" class="form-horizontal">
+        <div class="row" style="width: 90%; margin:0 auto;">
+            <div class="staff">商户名称：麻辣烫店 | 员工：业务123</div>
+            <div class="row">
+                <div class="input-group">
+                    <input type="text" class=" money_inp" name="money" id="jine" autofocus="autofocus" readonly placeholder="输入金额">
+                </div>
+            </div>
+            <div class="row">
+                <div class="wxzf row">
+                    <img src="__PUBLIC__/pay2/images/banner.jpg" width="100%" alt="">
+                </div>
+            </div>
+        </div>
+        <table class="sx_jp" id="sx_table">
+            <tr>
+                <td><input class="btn_nums" type="button" name="s1" value="1" id="key1" /></td>
+                <td><input class="btn_nums" type="button" name="s2" value="2" id="key2" /></td>
+                <td><input class="btn_nums" type="button" name="s3" value="3" id="key3" /></td>
+                <td><input id="keysc" class="btn_nums btn_del" type="button" name="" value="" /><!-- <input class="btn_nums" type="button" name="sx" value="删除" id="keysc" /> --></td>
+            </tr>            
+            <tr>
+                
+                <td><input class="btn_nums"type="button" name="s4" value="4" id="key4" /></td>
+                <td><input class="btn_nums"type="button" name="s5" value="5" id="key5" /></td>
+                <td><input class="btn_nums"type="button" name="s6" value="6" id="key6" /></td>
+                <td rowspan="3"><input type="submit" value="确认支付" class="btn btn-success btn-block btn_sub" id="send"></td>
+
+            </tr>
+            <tr>
+                
+                <td><input class="btn_nums" type="button" name="s7" value="7" id="key7" /></td>
+                <td><input class="btn_nums" type="button" name="s8" value="8" id="key8" /></td>
+                <td><input class="btn_nums" type="button" name="s9" value="9" id="key9"/></td>
+            </tr>
+            <tr>
+                <td><input id="sx_close" class="btn_nums btn_keyboard" type="button" name="" value="" /></td>
+                <td><input class="btn_nums" type="button" name="s0" value="0" id="key0" /></td>
+                <td><input class="btn_nums" type="button" name="s10" value="." id="key00" /></td>
+            </tr>
+        </table>
+        </form>
+        
+        <script src="__PUBLIC__/pay2/js/jquery-latest.js"></script> 
+        <script>
+            var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
+            var re = /^[0]+[0-9]/
+            $("#jine").blur(function(){
+                $("#sx_table").show();
+                if($("#jine").val()!="" && $("#jine").val() <= 100000000  && reg.test($(this).val()) && $("#jine").val()!=0){
+
+                    $("#jine").css("border-color","#e5e5e5").css("color","#000");
+                    $(".input-group-addon").css("border-color","#e5e5e5").css("color","#e5e5e5");
+                    $(".tips").html("输入金额成功！").css("color","#000").removeClass("onError");
+                    $("#send").attr("disabled",false);
+                    if(re.test($(this).val())){
+                        $("#jine").css("border-color","#f7aa90").css("color","#f7aa90");
+                        $("#jine").parent().css("color","#f7aa90").css("color","#f7aa90");
+                        $(".input-group-addon").css("border-color","#ef5522").css("color","#ef5522");
+                        //$(".tips").html("请输入正确的金额！").css("color","#ef5522").addClass("onError");
+                        $("#send").attr("disabled",true);
+                    }
+                }else if($("#jine").val()==""){
+                    $("#send").attr("disabled",true);
+                }
+                else{
+                    $("#jine").css("border-color","#f7aa90").css("color","#E74C3C");
+                    $("#jine").parent().css("color","#f7aa90").css("color","#f7aa90");
+                    $(".input-group-addon").css("border-color","#ef5522").css("color","#ef5522");
+                    //$(".tips").html("请输入正确的金额！").css("color","#ef5522").addClass("onError");
+                    $("#send").attr("disabled",true);
+                }
+            }).bind("touchstart",function(){
+                   $(this).triggerHandler("blur");
+            }).bind("focus",function(){
+                $(this).triggerHandler("blur");
+            }).keyup("touchstart",function(){
+                   $(this).triggerHandler("blur");
+            });//end blur
+            $('#send').click(function(){
+                        $("#jine").trigger('blur');
+                        var numError = $('.onError').length;
+                        if(numError){
+                            return false;
+                        } 
+                 });
+
+        </script>
+        <script>
+            $("#sx_close").click(function(){
+                $("#sx_table").hide();
+            });
+            function shu(x){
+                $("#jine").readonly = false;                
+                    if (x==".")
+                    {
+                    var kk=jine.value
+                    if (kk.indexOf(".")<0){
+                        jine.value=jine.value+x;
+                    }
+                    }
+                    else
+                    {
+                    jine.value=jine.value+x;
+                    }                
+                $("#jine").focus();
+            }
+            function shanchu(){
+                var bs = jine.value;
+                    bs = bs.substr(0,bs.length - 1);
+                    jine.value = bs;
+                    jine.focus();
+                    if($("#jine").val()==""){
+                    $("#send").attr("disabled",true);
+                }
+            }
+            $("#key1").bind("touchstart",function(){
+                shu(1);
+            })
+            $("#key2").bind("touchstart",function(){
+                shu(2);
+            })
+            $("#key3").bind("touchstart",function(){
+                shu(3);
+            })
+            $("#key4").bind("touchstart",function(){
+                shu(4);
+            })
+            $("#key5").bind("touchstart",function(){
+                shu(5);
+            })
+            $("#key6").bind("touchstart",function(){
+                shu(6);
+            })
+            $("#key7").bind("touchstart",function(){
+                shu(7);
+            })
+            $("#key8").bind("touchstart",function(){
+                shu(8);
+            })
+            $("#key9").bind("touchstart",function(){
+                shu(9);
+            })
+            $("#key00").bind("touchstart",function(){
+                shu(".");
+            })
+            $("#key0").bind("touchstart",function(){
+                shu(0);
+            })
+            $("#keysc").bind("touchstart",function(){
+                shanchu();
+            })
+        </script>
+
+    </body>
+</html>

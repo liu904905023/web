@@ -1,0 +1,266 @@
+<include file="Base:header"/>
+      <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+          <script type="text/javascript">try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}</script>
+          <ul class="breadcrumb">
+            <li>
+              <i class="icon-home home-icon"></i>
+              <a href="__APP__">首页</a>
+            </li>
+            <li>支付宝扫码支付</li>
+          </ul>
+        </div>
+        <div class="page-content">
+          <div class="page-header">
+            <h1>支付宝扫码支付</h1>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 sx-search">
+              <form action="" id="validation-form" method="post" role="form">
+                <div class="col-md-6 col-xs-12 mr_mab">
+                  <div class="form-group">
+                    <label for="sx-8" class="control-label col-sm-4">金额</label>
+                    <div class="over">
+                      <div class="col-sm-8 input-group"> 
+                      <input type="text" id="fee" class="form-control" name="sx_bh" placeholder="金额" />
+                      <span class="input-group-addon">元</span>
+                     </div> 
+					  <label class="control-label col-sm-4"></label>
+                     <div id="yz_1" class="yz col-sm-8">金额不能为空</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-6 col-xs-12">
+                  <div class="form-group">
+                    <label for="sx-9" class="control-label col-sm-4">收款码</label>
+                    <div class="over">
+                      <div class="col-sm-8">
+                        <input type="text" id="code" class="form-control" name="sx_shfwbh" placeholder="收款码" />
+						<div id="yz_2" class="yz"></div><div class= "yz" id ="TimeDown" disabled="disabled">支付倒计时<span id="num"></span>秒</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <button type="button" id = "pay" class="btn btn-primary">
+                        <i class="icon-search bigger-110"></i>
+                        确认
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+      <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+  </div>
+ <include file="Base:jsfile"/>
+  <script type="text/javascript">
+        jQuery(function($) {
+            var oTable1 = $('#sample-table-2').dataTable( {
+            "aoColumns": [
+                { "bSortable": false },
+                null, null,null, null, null,
+              { "bSortable": false }
+            ]
+        });
+        
+        $('table th input:checkbox').on('click' , function(){
+          var that = this;
+          $(this).closest('table').find('tr > td:first-child input:checkbox')
+          .each(function(){
+            this.checked = that.checked;
+            $(this).closest('tr').toggleClass('selected');
+          });
+        });
+      
+        $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+        function tooltip_placement(context, source) {
+          var $source = $(source);
+          var $parent = $source.closest('table')
+          var off1 = $parent.offset();
+          var w1 = $parent.width();
+          var off2 = $source.offset();
+          var w2 = $source.width();
+          if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+          return 'left';
+        }
+        })
+    </script>
+  <script type="text/javascript">
+      /*jQuery(function($) {    
+      
+        $('#validation-form').validate({
+          errorElement: 'div',
+          errorClass: 'help-block',
+          focusInvalid: false,
+          rules: {
+            sx_bh: {
+              required: true
+            },
+            sx_shfwbh: {
+              required: true
+            }
+          },
+      
+          messages: {
+            sx_bh: {
+              required: "金额不能为空."
+            },
+            sx_shfwbh: {
+              required: "收款码不能为空."
+            },
+            subscription: "Please choose at least one option",
+            gender: "Please choose gender",
+            agree: "Please accept our policy"
+          },
+      
+          invalidHandler: function (event, validator) { //display error alert on form submit   
+            $('.alert-danger', $('.login-form')).show();
+          },
+      
+          highlight: function (e) {
+            $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+          },
+      
+          success: function (e) {
+            $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+            $(e).remove();
+          },
+      
+          errorPlacement: function (error, element) {
+            if(element.is(':checkbox') || element.is(':radio')) {
+              var controls = element.closest('div[class*="col-"]');
+              if(controls.find(':checkbox,:radio').length > 1) controls.append(error);
+              else error.insertAfter(element.nextAll('.lbl:eq(0)').eq(0));
+            }
+            else if(element.is('.select2')) {
+              error.insertAfter(element.siblings('[class*="select2-container"]:eq(0)'));
+            }
+            else if(element.is('.chosen-select')) {
+              error.insertAfter(element.siblings('[class*="chosen-container"]:eq(0)'));
+            }
+            else error.insertAfter(element.parent());
+          },
+      
+          submitHandler: function (form) {
+            console.log("ok");
+          },
+          invalidHandler: function (form) {
+            console.log("error");
+          }
+        });
+
+      })*/
+    </script>
+	<script>
+	$(document).ready(function(){
+	money = $("#fee");
+	var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
+	$(".yz").hide();
+	money.blur(function(){
+	if(money.val()==0 || !reg.test(money.val())){
+			money.val("");
+			$("#yz_1").css({"margin-top":"15px","color":"#d68273"});
+			$("#yz_1").html("请正确填写金额且不能为0");
+			$("#yz_1").show();
+			setTimeout(function(){money.focus();},0);
+			return false;
+		}
+			$("#yz_1").hide();
+	})
+/*
+		$("#code").blur(function(){
+		if($("#code").val()==0){
+			$("#code").val("");
+			$("#yz_2").css({"margin-top":"15px","color":"#d68273"});
+			$("#yz_2").html("收款码不能为空!");
+			$("#yz_2").show();
+			setTimeout(function(){$("#code").focus();},0);
+			return false;
+		}
+			$("#yz_2").hide();
+	})
+	*/
+	$(document).keydown(function(e){
+    if(!e) var e = window.event; 
+    if(e.keyCode==49){
+		clearTimeout(TimeOne);
+		payact();
+		jump(30);
+	}
+	});
+	$("#pay").click(function(){
+		clearTimeout(TimeOne);
+		payact();
+		jump(30);
+	
+	})
+	var TimeOne;
+	function jump(count) {
+
+                TimeOne =setTimeout(function(){
+                    count--;
+                    if(count > 0) {
+                        $('#num').text(count);
+                        jump(count);
+                    } else {
+                       $("#TimeDown").hide();
+                    }
+                }, 1000);
+            }
+
+	function payact(){
+	
+		TimeTwo = setTimeout(function () { 
+		var code = $("#code").val();
+		var fee = $("#fee").val();
+		if(fee==0){
+		$("#yz_1").show();
+		$("#yz_1").html("请输入正确金额!");
+		return false;
+		
+		}
+		if(code.length>18){
+		$("#yz_2").show();
+		$("#yz_2").html("请勿重复扫码!");
+		$("#code").val("")
+		return false;
+		}else if(code.length==0){
+		$("#yz_2").html("请重新扫码!");
+		$("#code").focus();
+		return false;
+		
+		}else{
+		$("#yz_2").hide();
+		$("#code").attr('disabled',true);
+		$("#TimeDown").show();
+		if (this.ajaxRequest_ != undefined && this.ajaxRequest_.readyState < 4) {
+                    return false;
+        }
+		this.ajaxRequest_ = $.post("__APP__/Pay/ali_pay",{auth_code:code,fee:fee},function(data){ 
+		$("#code").attr('disabled',false);
+		$("#code").val("");
+		$("#code").focus();
+		$("#yz_2").html(data.Description);
+		$("#yz_2").show();
+		$('#TimeDown').hide();
+        });
+		}
+		},1000);
+	
+	}
+
+
+
+	})
+	</script>
+<include file="Base:footer"/>
