@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>大学</title>
+    <link href="__PUBLIC__/University/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/University/css/flat-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/University/css/swiper.min.css">
+    <link href="__PUBLIC__/University/css/style.css" rel="stylesheet">
+</head>
+<body>
+	<form action= "__APP__/Weixin/weixin" method="POST">
+	<div class="swiper-container swiper-container-h">
+        <div class="swiper-wrapper">
+           <div class="swiper-slide"><img src="__PUBLIC__/University/images/wifi1.jpg"/></div>
+           <div class="swiper-slide"><img src="__PUBLIC__/University/images/wifi2.jpg"/></div>
+           <div class="swiper-slide"><img src="__PUBLIC__/University/images/wifi3.jpg"/></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-h"></div>
+    </div>
+    <div class="login-form">
+        <div class="form-group">
+            <input type="text" class="form-control login-field" value="" name = "Name" placeholder="姓名" id="login-name">
+            <label class="login-field-icon glyphicon glyphicon-user" for="login-name"></label>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control login-field" value="" name = "Mobile" placeholder="电话" id="login-pass">
+        	<label class="login-field-icon glyphicon glyphicon-earphone" for="login-pass"></label>
+        </div>
+        <div class="form-group">
+        	<div class="login-field form-control" id="KD" >
+        		<select class="" name="Proudct" id="KDS">
+                    <option selected="" value="选择宽带">选择宽带</option>
+                    <option  value="2M-Wifi">2M-Wifi</option>
+				    <option value="2M-Wifi（电信）">2M-Wifi（电信）</option>
+				    <option value="2M">2M</option>
+				    <option value="6M">6M</option>
+				    <option value="12M">12M</option>
+				    <option value="20M">20M</option>
+            	</select>
+            	<span class="caret"></span>
+        	</div>
+            <label class="login-field-icon glyphicon glyphicon-globe" for="KDS"></label>
+        </div>
+        <div class="form-group">
+       		<span class="form-control login-field" >￥<span id="money">0</span>元</span>
+         	<label class="login-field-icon glyphicon glyphicon-credit-card" for="login-pass"></label>
+        </div>
+		<div class="form-group">
+            <input type="text" class="form-control login-field" value="" name = "Number" placeholder="学号" id="login-studentId">
+            <label class="login-field-icon glyphicon glyphicon-book" for="login-pass"></label>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control login-field" value="" name = "Remark" placeholder="备注" id="login-note">
+            <label class="login-field-icon glyphicon glyphicon-comment" for="login-pass"></label>
+        </div>
+        <div class="form-group">
+        	<span class="form-control login-field">
+	        	<input type="button" value="-" id="down"/>
+	        	<a type="" id="num">1</a>
+	        	<input type="button" value="+" id="add"/>
+        	</span>
+            <label class="login-field-icon glyphicon glyphicon-shopping-cart" for="login-pass"></label>
+        </div>
+		<input type= "hidden" value ="" id = "Total_Money" name = "money">
+		<input type= "hidden" value =1 id = "ProductCount" name = "ProductCount">
+        <button class="btn btn-primary btn-lg btn-block" type="submit" id="btn">付款（合计：￥<span id="allMoney"></span>元）</button>
+    </div>
+	</form>
+</body>
+<script src="__PUBLIC__/University/js/zepto.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/University/js/index.js"></script>
+ <!-- Swiper JS -->
+<script src="__PUBLIC__/University/js/swiper.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+	var swiperH = new Swiper('.swiper-container', {
+	    pagination: '.swiper-pagination-h',
+	    paginationClickable: true,
+	    spaceBetween: 50,
+	    autoplay:2000,
+	    autoplayDisableOnInteraction : false
+	});
+</script>
+
+<script type="text/javascript">
+	//调用微信JS api 支付
+    callpay();
+	function jsApiCall()
+	{
+		WeixinJSBridge.invoke(
+			'getBrandWCPayRequest',
+			<{$jsApiParameters}>,
+			function(res){
+				  if ( res.err_msg == "get_brand_wcpay_request:ok" ) {
+//                        alert( '交易完成！' );
+						//$("#gg").show();
+						//$(".close").click(function(){
+                        WeixinJSBridge.call('closeWindow');
+						//});
+                    } else {
+//                        alert( '交易未完成！' );
+                        WeixinJSBridge.call( 'closeWindow' );
+                    }
+			}
+		);
+	}
+
+	function callpay()
+	{
+		if (typeof WeixinJSBridge == "undefined"){
+		    if( document.addEventListener ){
+		        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+		    }else if (document.attachEvent){
+		        document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+		        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+		    }
+		}else{
+		    jsApiCall();
+		}
+	}
+	</script>
+</html>

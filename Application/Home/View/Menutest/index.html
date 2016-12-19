@@ -1,0 +1,17 @@
+<!-- <php>foreach($list as $key=>$val){
+if($val['Description']=="交易订单"){
+
+}
+}</php> --> <volist name = "list3"  id = "vo1" key = "k1">
+<{$vo1}><br/>
+ <volist name = "list"  id = "vo" key = "k">
+<if condition="$vo['Description'] eq $vo1 ">
+<{$key}><{$vo['RoleName']}><br/>
+</if>
+
+</volist> 
+</volist> 
+<!-- <{$list1[0]}><br/>
+ -->
+
+

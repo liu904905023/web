@@ -1,0 +1,28 @@
+<h1>云网科技</h1>
+<script src="<{$Think.const.ROOT_JS_PATH}>/lib/jquery-1.10.2.min.js"></script>
+<script src="<{$Think.const.ROOT_JS_PATH}>/lib/bootstrap.min.js"></script>
+<form method="post" action="" onsubmit="return check()">
+    <label for='sub_mch_id'>请输入商户号：</label>
+    <input id="sub_mch_id" type="text" name="sub_mch_id" value="" style="width:500px;height:30px;"/>
+    <br/>
+    <br/>
+    <input id="aa" type ="submit" value="查询" style="width:620px;height:40px;"/>
+</form>
+<script>
+    function check(){
+        if ( $( '#sub_mch_id' ).val( ) == '' ) {
+            alert( '商户号不能为空！！' );
+            return false;
+        }
+        if ( isNaN($( '#sub_mch_id' ).val( )) ) {
+            alert( '商户号只能是数字！' );
+            return false;
+        }
+        if ( $( '#mer_base_name' ).val( ) == '' ) {
+            alert( '公司名称不能为空！！' );
+            return false;
+        }
+        return true;
+    }
+
+</script>

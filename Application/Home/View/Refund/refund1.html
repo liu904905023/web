@@ -1,0 +1,520 @@
+<include file="Base:header"/>
+		<div class="main-content">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}</script>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home home-icon"></i>
+                            <a href="__APP__">首页</a>
+                        </li>
+                        <li>退款</li>
+                    </ul>
+                </div>
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1>退款</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 sx-search">
+<form id="searchform" name="searchform"  action="" method="post"  onSubmit="check();">
+                                <div class="col-md-6 col-xs-12 mr_mab">
+                                    <div class="form-group">
+                                        <label for="dtp_input1" class="control-label col-sm-4" >交易时间从</label>
+                                        <div class="col-sm-8 input-group date form_date" data-date="" data-date-format="yyyy年 MM dd日" data-link-field="dtp_input1" data-link-format="yyyy-mm-dd">
+                                            <input type="text" size="16" id = "Time_Start" name="Time_Start" class="form-control" value="">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </span>
+                                        </div>
+                                        <input type="hidden" id="dtp_input1" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12 mr_mab">
+                                    <div class="form-group">
+                                        <label for="sx-2" class="control-label col-sm-4">交易时间到</label>
+                                        <div class="col-sm-8 input-group date form_date" data-date="" data-date-format="yyyy年 MM dd日" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                            <input type="text" size="16" id ="Time_End" name="Time_End" class="form-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </span>
+                                        </div>
+                                        <input type="hidden" id="dtp_input2" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12 mr_mab">
+                                    <div class="form-group">
+                                        <label for="sx-8" class="control-label col-sm-4">订单号</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="ordernum" name="ordernum" class="form-control" placeholder="订单号"></div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-6 col-xs-12 mr_mab">
+                                    <div class="form-group">
+                                        <label for="sx-8" class="control-label col-sm-4">商户名称</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="storename" class="form-control" placeholder="商户名称"></div>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="form-group txrimar">
+                                        <a href="#" class="btn btn-primary" id ="search">
+                                            <i class="icon-search"></i>
+                                            查询
+                                        </a>
+                                        &nbsp;
+                            
+                                        <a href="#" type="submit" class="btn btn-success" id="download" onclick="checkaction(0);"  disabled=true>
+                                            <i class="icon-download-alt"></i>
+                                            下载报表
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="table-header">查询结果</div>
+                                    <div class="col-xs-12">
+                                        <div class="table-responsive">
+                                            <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                                <thead>
+                                                     <tr>
+                                                        <th>序号</th>
+                                                        <th>订单号</th>
+                                                        <th>交易类型</th>
+                                                        <th>交易币种</th>
+                                                        <th>交易时间</th>
+                                                        <th>订单金额</th>
+                                                        <th>已退总金额</th>
+                                                        <th>可退金额</th>
+                                                        <th>退款笔数</th>
+                                                        <th>退款操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id = "info">
+                                                    
+                                                </tbody>
+                                            </table>
+											<input type = "hidden" id = "totalCount" value= "">
+                                            <div class="page_new">
+                                                <input type = "hidden" id = "totalCount" value= "">
+                                                 <a id="prev">上一页</a>  <a id = "next">下一页</a> <a id = "first">最前页</a> <a id = "last">最末页</a>
+                                                <select id = "SelectNo">
+                                                    
+                                                </select>
+                                                <span>总 <label id = "TotalCount"></label> 条</span> <span>分为 <label id = "TotalPage"></label> 页</span> <span>当前第 <label id ="NowPage">1</label> 页</span><input type= "hidden" id= "PageSize" value=10>
+    											
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- </form> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	 <div class="col-xs-6 col-sm-3 pricing-box">
+        <div class="widget-box">
+            <div class="widget-header header-color-red3">
+                <h5 class="bigger lighter">退款</h5>
+            </div>
+            <div class="widget-body">
+                <div class="widget-main">
+                    <div class="row">
+                        <div class="col-md-12 mr_mab">
+                            <div class="form-group">
+								<input type = "hidden" value ="" id = "SOSysNo">
+								<input type = "hidden" value ="" id = "total_fee">
+								<input type = "hidden" value ="" id = "leftfee">
+								<input type = "hidden" value ="" id = "paytype">
+								<input type = "hidden" value ="" id = "casfee">
+                                <label for="" class="control-label col-md-3 col-xs-12">退款订单号</label>
+                                <div class="col-md-9 col-xs-12">
+                                    <input type="text" id="refundnum" value ="" class="form-control" disabled="" placeholder="退款订单号"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mr_mab">
+                            <div class="form-group">
+                                <label for="" class="control-label col-md-3 col-xs-12">退款金额</label>
+                                <div class="col-md-9 col-xs-12">
+                                    <input type="text" id="fee" value ="" class="form-control" placeholder="退款金额（元）"></div>
+                            </div>
+                            <div class="form-group refund_fee" style="display:none">
+                                <label for="" class="control-label col-md-3 col-xs-12"></label>
+                                <div class="col-md-9 col-xs-12 mt15 error">
+                                退款金额不符
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="" class="control-label col-md-3 col-xs-12">密码</label>
+                                <div class="col-md-9 col-xs-12">
+                                    <input type="password" id="password" class="form-control" placeholder="密码" value = ></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="refund_box">
+                    <a href="#" class="btn btn-danger  confirm_refund" >
+                        <i class="icon-exclamation-sign bigger-110"></i>
+                        <span>确认退款</span>
+                    </a>
+                    <a href="#" class="btn btn-grey btn-refund">
+                        <span>取消</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg_black"></div>
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="icon-double-angle-up icon-only bigger-110"></i>
+        </a>
+    </div>
+   <include file="Base:jsfile"/>
+	
+    <script type="text/javascript">
+
+        jQuery(function($) {
+            var oTable1 = $('#sample-table-2').dataTable( {
+            "aoColumns": [
+                { "bSortable": false },
+                null, null,null, null, null,
+              { "bSortable": false }
+            ]
+        });
+        
+        $('table th input:checkbox').on('click' , function(){
+          var that = this;
+          $(this).closest('table').find('tr > td:first-child input:checkbox')
+          .each(function(){
+            this.checked = that.checked;
+            $(this).closest('tr').toggleClass('selected');
+          });
+        });
+      
+        $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+        function tooltip_placement(context, source) {
+          var $source = $(source);
+          var $parent = $source.closest('table')
+          var off1 = $parent.offset();
+          var w1 = $parent.width();
+          var off2 = $source.offset();
+          var w2 = $source.width();
+          if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+          return 'left';
+        }
+        })
+    </script>
+    <script>
+    var reg_phone = /^0?1[3|4|5|8][0-9]\d{8}$/;
+    var reg_email = /.+@.+\.[a-zA-Z]{2,4}$/;
+    $("#sx-2").blur(function(){
+      if(reg_email.test($("#sx-2").val()) || $("#sx-2").val()==""){
+        $("#email").hide();
+      }
+      else{
+        $("#email").show();
+      }
+    }).focus(function(){
+      $(this).triggerHandler("blur");
+    }).keyup(function(){
+      $(this).triggerHandler("blur");
+    });
+    $("#sx-3").blur(function(){
+      if(reg_phone.test($("#sx-3").val()) || $("#sx-3").val()==""){
+        $("#phone").hide();
+      }
+      else{
+        $("#phone").show();
+      }
+    }).focus(function(){
+      $(this).triggerHandler("blur");
+    }).keyup(function(){
+      $(this).triggerHandler("blur");
+    });    
+    </script>
+    <script type="text/javascript">
+    $(function(){
+        var f = $("#fee").val();
+        var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
+        $("#fee").blur(function(){
+            if($("#fee").val() == 0 || !reg.test($("#fee").val())){
+                $("#fee").val("");
+                $('.refund_fee').show();
+                setTimeout(function(){$("#fee").focus();},0);
+                return false;
+            }
+                $('.refund_fee').hide();
+        })
+    })
+
+    $('.form_date').datetimepicker({
+
+        language:  'fr',
+
+        weekStart: 1,
+
+        todayBtn:  1,
+
+        autoclose: 1,
+
+        todayHighlight: 1,
+
+        startView: 2,
+
+        minView: 2,
+
+        forceParse: 0
+
+    });
+    $("#Time_Start").blur(function(){
+        if($(this).val()==""){
+            $("#dtp_input1").val("");
+        }
+    })
+    $("#Time_End").blur(function(){
+        if($(this).val()==""){
+            $("#dtp_input2").val("");
+        }
+    })
+    </script>
+	<script>
+
+	function confirmAct(m,n,p,payfee,leftfee,casfee,type){
+	if(confirm('确定要执行此操作吗?'))
+	{	
+		$.ajax( {
+                    type : "post",
+                    url : "__APP__/Refund/refundinsert",
+                    data : {
+                        out_trade_no:m,
+						SOSysNo:n,
+						refund_fee:payfee,
+						paytype:type,
+						total_fee:casfee
+                    
+                      
+                    },
+                    async:false,
+                    success : function ( data ){
+
+                        alert( data.Description );
+						 $(".pricing-box").hide(300);
+						 location.reload();
+						 $(".bg_black").hide();
+						 $("#fee,#password").val("");
+                    },
+                    error : function (){
+                        //alert( 'ajax error!' );
+                    }
+
+                })
+
+		
+		return true;
+	}else{
+	
+		return false; 
+
+	}
+			
+
+	}
+    
+		function wxrefund(m,n,leftfee,totalfee,casfee,type){//m:订单号,n:主键ID,t:可退金额,p:密码,totalfee:总计
+            $(".pricing-box").show(300);
+            $(".bg_black").show();
+			$("#refundnum").val(m);
+			$("#SOSysNo").val(n);
+			$("#total_fee").val(totalfee);
+			$("#leftfee").val(leftfee);
+			$("#casfee").val(casfee);
+			$("#paytype").val(type);
+
+        };
+
+			$(".confirm_refund").click(function(){
+			var p = $("#password").val();
+			var payfee =parseInt( $("#fee").val());
+			var m = $("#refundnum").val();
+			var n = $("#SOSysNo").val();
+			var leftfee = parseInt($("#leftfee").val());
+			var paytype =$("#paytype").val();
+			var casfee =$("#casfee").val();
+            var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
+			console.log("退款金额");console.log(payfee);
+			console.log("可退金额");console.log(leftfee);
+			if(payfee>leftfee){$('.refund_fee').show();return false;}else{$('.refund_fee').hide();}
+			   $.ajax( {
+                    type : "post",
+                    url : "__APP__/Refund/checkuserpass",
+                    data : {
+                       password:p
+                    
+                      
+                    },
+                    async:false,
+                    success : function ( data ){
+						if(data	==0){
+                        alert("密码错误请重新输入");
+						return false;
+						}else if(data ==1){
+						confirmAct(m,n,p,payfee,leftfee,casfee,paytype);
+						}
+                    },
+                    error : function (){
+                        alert( 'ajax error!' );
+                    }
+
+                    })
+
+			});
+        $(".btn-refund").click(function(){
+            $(".pricing-box").hide(300);
+            $(".bg_black").hide();
+        })
+	
+	var total,totalPage,pageStr; //总记录数，每页显示数，总页数
+	
+
+
+
+	function infoview(PageNumber,PageSize){
+		$('#info').html("");
+		var Time_Start = $("#dtp_input1").val();
+		var Time_end = $("#dtp_input2").val();
+		var out_trade_no = $("#ordernum").val();
+		//var Customer = $("#storename").val();
+		var tt="";
+		 if (this.ajaxRequest_ != undefined && this.ajaxRequest_.readyState < 4) {
+                    return false;
+        }
+
+			this.ajaxRequest_ =
+			$.post("__APP__/Refund/refundlist",{Time_Start:Time_Start,Time_end:Time_end,out_trade_no:out_trade_no,PageNumber:PageNumber,PageSize:PageSize},function(data){ 
+			if(data.totalCount>0){
+			$.each(data.model, function(k, v) {
+			
+			if(v.fee>0){
+				if(v.Pay_Type==103){
+					var renfundbutton = "<a  href=\"#\" onclick=\"wxrefund('"+v.Out_trade_no+"',"+v.SysNo+","+v.fee+","+v.Total_fee+","+v.Cash_fee+","+v.Pay_Type+")\" class=\"btn btn-danger btn-xs  \">103退款</a>";
+			
+				}else{
+					var renfundbutton = "<a href=\"#\" onclick=\"wxrefund('"+v.Out_trade_no+"',"+v.SysNo+","+v.fee+","+v.Total_fee+","+v.Cash_fee+","+v.Pay_Type+")\"  class=\"btn btn-danger btn-xs  \">102退款</a>";
+				}
+
+			}else{
+			var renfundbutton = "<a  class=\"btn btn-info btn-xs  \">完成</a>";
+			}
+			
+			tt += "<tr><td>"+v.SysNo+"</td><td>"+v.Out_trade_no+"</td><td>"+v.Pay_Type+"</td><td>人民币</td><td>"+v.Time_Start+"</td><td>"+v.Cash_fee+"</td><td>"+v.refund_fee+"</td><td>"+v.fee+"</td><td>"+v.refundCount+"</td><td>   "+renfundbutton+"</td></tr>";
+			});
+			$('#info').html(tt);
+			$('#TotalCount').html(data.totalCount);
+			TotalPage = Math.ceil(data.totalCount/PageSize);
+			var ff ="";
+			for (i=1;i<=TotalPage ;i++ )
+			{
+				ff+="<option value = \""+i+"\">"+i+"</option>";
+			}
+			$('#SelectNo').html(ff);
+			$('#TotalPage').html(TotalPage);
+			$('#PageNumber').html(PageNumber);
+			$('#SelectNo').val(PageNumber+1);
+			$('#NowPage').text(PageNumber+1);
+			$(".page_new").show();
+
+			}else{
+			
+			$(".page_new").hide();
+			}
+            $('#download').attr("disabled",false);
+           }); 
+	}
+
+	var total,totalPage,pageStr; //总记录数，每页显示数，总页数
+	var PageSize = $("#PageSize").val();
+	// infoview(0,PageSize);
+    $("#download").click(function(){
+    $.post("__APP__/Download/downloadrefund",{PageNumber:0,PageSize:2000},function(data){ 
+    });
+    });
+
+    function check(){
+        infoview(0,PageSize);
+        return false;
+    }
+
+	$("#search").click(function(){
+					infoview(0,PageSize);
+		
+	});
+/*	$("#first").click(function(){
+		NowPage = parseInt($("#NowPage").text());
+		if(NowPage>1){
+			Page = 0;
+		infoview(Page,PageSize);
+		}else{
+		$(this).addClass("disabled");
+		}
+		
+		
+	})
+	$("#last").click(function(){
+	
+		LastPage = parseInt($("#TotalPage").text());
+		NowPage = parseInt($("#NowPage").text());
+		if(LastPage==NowPage){
+		
+		}else{
+		Page = LastPage-1;
+		infoview(Page,PageSize);
+		}
+	})
+	$("#prev").click(function(){
+		
+		NowPage = parseInt($("#NowPage").text());
+		Total = parseInt($("#TotalPage").text());
+		Page = NowPage-2;
+		if(Page<0){
+			$(this).addClass("disabled");
+		}else{
+		$(this).removeClass();
+		infoview(Page,PageSize);
+		}
+	
+	})
+	$("#next").click(function(){
+	
+		NowPage = parseInt($("#NowPage").text());
+
+		Total = parseInt($("#TotalPage").text());
+		Page = NowPage;
+		if(Page>=Total){
+			$(this).addClass("disabled");
+		}else{
+			$(this).removeClass();
+			infoview(Page,PageSize);
+		}
+		
+		
+	})
+	$('#SelectNo').change(function(){
+	var Page = parseInt($(this).children('option:selected').val())-1;
+	infoview(Page,PageSize);
+	
+	})*/
+function checkaction(v){ 
+    if(v==0){ 
+        document.searchform.action="__APP__/Download/downloadrefund"; 
+    }
+    searchform.submit(); 
+} 							
+
+
+
+
+</script>
+<include file="Base:footer"/>

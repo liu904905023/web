@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+
+body { background: #e6eaf5; font-family: "微软雅黑", "黑体"; }
+header { background: #0299e4; margin-bottom: 20px; border-bottom: 2px solid #0289cd; text-align: center; }
+header > img { width: 100%; }
+
+footer { text-align: center; width: 100%; color: #a5a8b0; font-size: 14px; position: fixed; left: 0; bottom: 20px; z-index: -1}
+.staff { font-size: 16px; color: #fff; text-align: left; padding-top: 8px;}
+

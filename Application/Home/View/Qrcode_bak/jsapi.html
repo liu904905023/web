@@ -1,0 +1,135 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+        <script src="<{$Think.const.QR_JS_PATH}>/lib/jquery-1.10.2.min.js"></script>
+
+        <title>云老虎-微信支付</title>
+        <script type="text/javascript">
+
+                window.onload = function ( ){
+                callpay( );
+                }
+            //调用微信JS api 支付
+            function jsApiCall( ){
+            WeixinJSBridge.invoke(
+                'getBrandWCPayRequest',
+                <{$jsApiParameters}> ,
+                function ( res ) {
+                WeixinJSBridge.log( res.err_msg );
+//                        alert( res.err_code + res.err_desc + res.err_msg );
+                if ( res.err_msg == "get_brand_wcpay_request:ok" ) {
+                //ajax.请求更新交易状态为get_brand_wcpay_request:ok成功
+                    var pars = { };
+                    pars.id = "<{$id}>";
+                    $.post( '<{:U("Qrcode/Qrcode/editOrder")}>',pars ).
+                    success( function ( data ){
+//                                alert( '交易完成!' );
+//                                alert( data.info );
+//                                alert( data.status );
+                                $("#gg").show();
+                                $(".close").click(function(){
+                                    window.top.opener = null; 
+//                                    window.close(); 
+                        WeixinJSBridge.call('closeWindow');
+                    });
+                            } );
+                } else {
+                //ajax.请求更新交易状态为get_brand_wcpay_request:fail失败或get_brand_wcpay_request:cancel取消
+                    var pars = { };
+                    pars.id = "<{$id}>";
+                    $.post( '<{:U("Qrcode/Qrcode/delOrder")}>',pars ).
+                    success( function ( data ){
+                        alert('交易取消!');
+                                $("#gg").show();
+                                $(".close").click(function(){
+                                    window.top.opener = null; 
+//                                    window.close(); 
+                        WeixinJSBridge.call('closeWindow');
+                    } );
+                            } );
+                }
+                }
+            );
+            }
+
+            function callpay( ){
+                if ( typeof WeixinJSBridge == "undefined" ) {
+                    if ( document.addEventListener ) {
+                        document.addEventListener( 'WeixinJSBridgeReady',
+                            jsApiCall,false );
+                    } else if ( document.attachEvent ) {
+                        document.attachEvent( 'WeixinJSBridgeReady',
+                        jsApiCall );
+                        document.attachEvent( 'onWeixinJSBridgeReady',
+                            jsApiCall );
+                    }
+                } else {
+                    jsApiCall( );
+                }
+            }
+        </script>
+        <style>
+            html,body {
+                height:100%;
+                margin:0;
+                padding:0;
+                overflow: hidden;
+            }
+            .close {
+                position: fixed;
+                right: 10px;
+                top: 10px;
+            }
+            #gg {
+                display: none;
+                width: 100%;
+                height: 100%;
+            }
+            .top1 {
+                width: 100%;
+                height: 67.34%;
+                display: block;
+                overflow: hidden;
+            }
+            .top2 {
+                width: 100%;
+                height: 5.89%;
+                display: block;
+                overflow: hidden;
+            }
+            .top3 {
+                width: 100%;
+                height: 7.04%;
+                display: block;
+                overflow: hidden;
+            }
+            .top4 {
+                width: 100%;
+                height: 19.8%;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="gg">
+            <div class="close"><img src="<{$Think.const.QR_IMG_PATH}>/icon_close_alt2.png" alt="关闭"></div>
+            <div class="top1">
+                <img src="<{$Think.const.QR_IMG_PATH}>/top1.jpg" height="100%" width="100%" alt="">
+            </div>
+            <div class="top2">
+                <a href="tel:043181060393">
+                    <img src="<{$Think.const.QR_IMG_PATH}>/tel1.jpg" height="100%" width="100%" alt="">
+                </a>
+            </div>
+            <div class="top3">
+                <a href="tel:4000600436">
+                    <img src="<{$Think.const.QR_IMG_PATH}>/tel2.jpg" height="100%" width="100%" alt="">
+                </a>
+            </div>
+            <div class="top4">
+                <img src="<{$Think.const.QR_IMG_PATH}>/bottom.jpg" height="100%" width="100%" alt="">
+            </div>
+        </div>
+    </body>
+</html>

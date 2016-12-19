@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>云网科技扫码支付</title>
+    <link href="__PUBLIC__/pay/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/pay/css/flat-ui.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/pay/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <header class="col-md-12">
+                <div class="row"><div class="col-md-6 staff">商户名称：<{$Customer}></div></div>
+                <img src="__PUBLIC__/pay/images/header.png" alt="">
+            </header>
+            <form action="__APP__/Wxpay/jsapi" onsubmit="return check()" method="post">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input class="form-control input-hg" id="fee" autofocus="autofocus" type="text" name="money" placeholder="输入支付金额">
+                    </div>
+                    <div style="display: none" id="show_alert" class="alert alert-danger" role="alert"></div>
+                </div>
+                <div class="col-md-12">
+                    <input id="pay_btn" class="btn btn-block btn-success" type="submit" value ="确认支付">
+                </div>
+            </form>
+        </div>
+        <footer>
+            云网科技 技术支持
+        </footer>
+    </div>
+
+    <script src="__PUBLIC__/assets/js/jquery.js"></script>
+    <script type="text/javascript">
+        var inpNum = $("input[name=money]");
+        var SAlert = $("#show_alert");
+        var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
+        $("#fee").blur(function(){
+            if(!reg.test($(inpNum).val()) || $(inpNum).val() == 0){
+                $(SAlert).slideDown(300);
+                $(SAlert).html("输入信息不合法");
+            }
+            if ( inpNum.val()=="" ){
+                $(SAlert).slideDown(300);
+                $(SAlert).html("输入信息不合法");
+            }
+        })
+     
+        $(inpNum).focus(function(){
+            $(SAlert).slideUp(300);
+            $(inpNum).val("");
+        })
+        $(document).ready(function(){
+            $("#fee").focus();
+        })
+		function check( ){
+                        if ( !reg.test( $( "#fee" ).val( ) ) ||
+                            $( "#fee" ).val( ) ==
+                            "" || $( "#fee" ).val( ) == 0 || $( "#fee" ).val( ) >
+                            10000000 ) {
+                            $( SAlert ).slideDown( 300 );
+                            $( SAlert ).html( "输入信息不合法" );
+                            return false;
+                        }
+//                        return true;
+                    }
+
+		
+    </script>
+
+
+</body>
+</html>

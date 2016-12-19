@@ -1,0 +1,83 @@
+html,body{height:100%;}
+#sx-body{height:100%; overflow: hidden;}
+.login-layout{
+	width: 100%;
+	height: 100%;
+		background:#0196D8 url(../images/yypt.jpg) center 0 no-repeat;}
+.login-main{background:url(../images/login/bg_body.png);position:relative;width:320px;height:520px;margin:20% auto;font-family:"微软雅黑";box-shadow:0 0 oldlace0 10px #000;}
+.login-main > .logo img{margin-left:115px;margin-top:30px;}
+.login-main > .logo p{color:#fff;font-size:16px;text-align:center;margin-top:10px;font-weight:bold;letter-spacing:1px;}
+.login-main > form .keywords{margin:15px auto 20px;position:relative;}
+.login-main .pwd-wrong{color:#fff;background:url(../images/login/wrong.png) no-repeat;margin-left:50px;margin-bottom:20px;height:30px;}
+.login-main .pwd-wrong span{margin-left:30px;}
+.login-main input{width:220px;height:35px;margin:10px auto;background-color:#0299e4;margin-left:50px;border:1px solid #fff;border-radius:10px!important;color:#fff;}
+.login-main input:last-child{background-color:#fff;color:#0299e4;font-weight:bold;font-size:18px;letter-spacing:2px;margin-top:40px;}
+.login-main input:last-child:hover{background-color:#ED6639;color:#fff;}
+.login-main h3{width:250px;margin:0 auto;color:#fff;font-size:12px;text-align:center;margin-top:10px;line-height:18px;}
+.login-main input:required:valid{width:220px;height:35px;}
+.login-main2{background:url(../images/login/bg_body2.png);position:relative;width:320px;height:470px;margin:20% auto;font-family:"微软雅黑";box-shadow:0 0 oldlace0 10px #000;}
+.login-main2 > .logo img{margin-left:115px;margin-top:30px;}
+.login-main2 > .logo p{color:#fff;font-size:16px;text-align:center;margin-top:10px;font-weight:bold;letter-spacing:1px;}
+.login-main2 > form .keywords{margin:15px auto 20px;position:relative;}
+.keywords .user_select { overflow: hidden; margin:0 0 40px 0; text-align: center;}
+.keywords .user_select input{width:110px;margin-left:15px;border:none;}
+.keywords .user_select input.business{background:url(../images/login/business.png);}
+.keywords .user_select input.employee{background:url(../images/login/employee.png);}
+.keywords .user_select span{position:relative;top:-15px;color:#fff;}
+.login-main2 .pwd-wrong{color:#fff;background:url(../images/login/wrong.png) no-repeat;margin-left:50px;margin-bottom:20px;height:30px;}
+.login-main2 .pwd-wrong span{margin-left:30px;}
+.login-main2 input{width:220px;height:35px;margin:10px auto;background-color:#307ecc;margin-left:50px;border:1px solid #fff;border-radius:10px!important;color:#fff;}
+.login-main2 input:last-child{background-color:#fff;color:#0299e4;font-weight:bold;font-size:18px;letter-spacing:2px;margin-top:40px;}
+.login-main2 input:last-child:hover{background-color:#ED6639;color:#fff;}
+.login-main2 h3{width:250px;margin:0 auto;color:#fff;font-size:12px;text-align:center;margin-top:10px;line-height:18px;}
+.login-main2 input:required:valid{width:220px;height:35px;}
+/*.keywords img{position:absolute;top:15px;left:240px;display:none;}*/
+/*.keywords img:nth-child(2){position:absolute;top:70px;left:240px;}*/
+.btns a{display:inline-block;text-align:center;line-height:35px;width:220px;margin-left:50px;border:1px solid #fff;border-radius:10px;color:#fff;background-color:#fff;color:#0299e4;font-size:16px;letter-spacing:2px;margin-top:10px;}
+.btns a:hover{background-color:#ED6639;color:#fff;}
+.btns button{display:inline-block;text-align:center;line-height:35px;width:220px;margin-left:50px;border:1px solid #fff;border-radius:10px;color:#fff;background-color:#fff;color:#0299e4;font-size:16px;letter-spacing:2px;margin-top:10px;}
+.btns button:hover{background-color:#ED6639;color:#fff;}
+.form-control::-webkit-input-placeholder { color: #8ad0f3; }
+.form-control::-moz-placeholder { color: #fff; }
+
+.rg-body{height:100%;width:100%;background:#0196D8 url(../images/yypt.jpg) center 0 no-repeat;}
+.rg-main{height:100%;width:100%;}
+.rg-bg{background:url(../images/register/bg_03_03.png) no-repeat;position:absolute;width:538px;height:684px;top:10%;left:50%;margin-left:-269px;}
+.rg-logo{position:relative;top:15px;float:left;width:100%;}
+.rg-logo img{margin-left:220px;}
+.rg-logo h3{text-align:center;width:100%;font-size:16px;font-weight:bold;margin-top:10px;color:#fff;}
+.rg-bg .rg-form{ width: 100%; margin-top:10px;float:left;}
+.rg-bg .input-bg{background-color:#2871b6;border:none;position:relative;width:310px;height:30px;line-height:30px;vertical-align:middle;margin-top:8px;margin-left:110px;border-radius:5px;box-shadow:1px 1px  1px #000 inset;}
+.input-bg input{border:none;background-color:#2871b6;height:20px;margin-top:6px;color:#fff;width:210px;line-height:18px;}
+.sf1 , .sf2{
+	display: none;
+	}
+.input-bg .wftinp { width: auto; margin: 0; position: relative; top: 6px; left: 8px; }
+.input-bg span, .input-status span{ margin-top:-2px;margin-left:10px;color:#fff;}
+.rg-form .rg-btn{ overflow: hidden; width: 100%; margin-top:20px; text-align:center;}
+.rg-form .input-status{margin-left:110px;color:#fff;margin-top:6px;background-color:#2871b6;border-radius:5px;box-shadow:1px 1px  1px #000 inset;height:30px;width:310px}
+.rg-form .input-status input{width:30px;cursor:pointer;margin-top:8px;}
+.rg-form .input-status span{margin-left:10px;}
+.rg-form .input-status label{font-weight:normal;cursor:pointer;}
+.rg-form > .input-status .pay_list_c1{cursor:pointer;}
+#rg-btn1, #rg-btn2{text-align:center; margin: 0 auto; line-height:35px;width:154px; border:1px solid #fff;border-radius:10px;color:#fff;background-color:#fff;color:#0299e4;font-size:16px;letter-spacing:2px;}
+#rg-btn1:hover, #rg-btn2:hover{background-color:#ED6639;color:#fff;}
+.form-right{background-size:cover;position:absolute;left:325px;top:-3px;line-height:30px;}
+.form-right img{width:25px;height:25px;}
+.form-right span{color:#fff;font-weight:bold;font-size:14px;}
+#form-right1,#form-right2,#form-right2a,#form-right3,#form-right4,#form-right5,#form-right6,#form-right7,#form-right8{display:none;}
+.btns a:hover {
+	text-decoration: none;
+}
+.w2 {
+	letter-spacing:2em;
+	margin-right:-2em; 
+}
+.w3 {
+	letter-spacing:0.5em;
+	margin-right:-0.5em;
+}
+
+.login_RePasd { padding: 0 0 20px 55px; }
+.login_RePasd input { display: inline-block; width: 16px; height: 16px; margin: 0; }
+.login_RePasd label { color: #fff; margin: 0; }

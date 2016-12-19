@@ -1,0 +1,8 @@
+/* CSS Document */
+/*分页*/
+ul, li { margin:0; padding:0; list-style:none;}
+#pageGro{ float:right; overflow:hidden; height:100%;}
+#pageGro div,#pageGro div ul li{ font-size:14px; color:#ed6639; line-height:23px; float:left; margin-left:5px;}
+#pageGro div ul li{ padding: 4px 12px; text-align:center; background: #fafafa; border:1px solid #d9d9d9; cursor:pointer;}
+#pageGro div ul li.on{ color:#fff; background:#ed6639; border:1px solid #ed6639;}
+#pageGro .pageUp,#pageGro .pageDown{ padding: 4px 12px; border:1px solid #d9d9d9; cursor:pointer;}
