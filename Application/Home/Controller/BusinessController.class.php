@@ -51,7 +51,7 @@ class BusinessController extends Base{
 		$info['rate'] = $list['model'][0]['Rate']; 
 		$info['RegisterTime'] =date("Y-m-d H:i:s",substr($list['model'][0]['RegisterTime'],6,10));
 		$StaffSysNo= $this -> QueryStaff($SysNO);
-		$info['TopStaffId'] = $this->QueryStaffInfo($StaffSysNo);
+		$info['TopStaffId'] = $this->($StaffSysNo);
 		$this ->ajaxreturn($info);
 	
 	}
