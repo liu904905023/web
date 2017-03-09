@@ -35,7 +35,7 @@ class Base extends Controller{
             "Content-Type:application/json;charset=UTF-8",
             "Content-length:" . strlen( $data ),
         );
-        $list = http_request( $url, $data, $head );
+        $list = ( $url, $data, $head );
         return json_decode( $list, TRUE );
     }
 

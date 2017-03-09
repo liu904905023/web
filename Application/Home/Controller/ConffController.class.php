@@ -42,7 +42,7 @@ class ConffController extends Base{
                 "Content-Type:application/json;charset=UTF-8",
                 "Content-length:" . strlen( $data )
             );
-            $res  = http_request( $url, $data, $head );
+            $res  = ( $url, $data, $head );
 
             $arrData = json_decode( $res, TRUE );
             $this->ajaxReturn( $arrData );

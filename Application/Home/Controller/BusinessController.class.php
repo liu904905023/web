@@ -38,7 +38,7 @@ class BusinessController extends Base{
             "X-Ywkj-Authentication:" . strlen( $data )
         );
 
-        $list = http_request(C('SERVER_HOST')."IPP3Customers/IPP3CustomerShopList",$data,$head);
+        $list = (C('SERVER_HOST')."IPP3Customers/IPP3CustomerShopList",$data,$head);
 		$list = json_decode($list,true);
 		$info['customer'] = $list['model'][0]['Customer']; 
 		$info['phone'] = $list['model'][0]['Phone']; 
@@ -65,7 +65,7 @@ class BusinessController extends Base{
 		"Content-length:" . strlen( $data ),
 		"X-Ywkj-Authentication:" . strlen( $data )
 	);
-	$list = http_request(C('SERVER_HOST')."IPP3Customers/IPP3CustomerUsersList",$data,$head);
+	$list = (C('SERVER_HOST')."IPP3Customers/IPP3CustomerUsersList",$data,$head);
 	$list = json_decode($list,true);
 	return $list['model'][0]['SystemUserSysNo'];	
 	}
@@ -78,7 +78,7 @@ class BusinessController extends Base{
 		"Content-length:" . strlen( $data ),
 		"X-Ywkj-Authentication:" . strlen( $data)
 		);
-		$list = http_request(C('SERVER_HOST')."IPP3Customers/IPP3SystemUserList",$data,$head);
+		$list = (C('SERVER_HOST')."IPP3Customers/IPP3SystemUserList",$data,$head);
 		$list = json_decode($list,true);
 		return $list['model'][0]['DisplayName'];
 	
@@ -92,7 +92,7 @@ class BusinessController extends Base{
 		"Content-length:" . strlen( $data ),
 		"X-Ywkj-Authentication:" . strlen( $data)
 		);
-		$list = http_request(C('SERVER_HOST')."IPP3Customers/IPP3CustomerUserRateUpdate",$data,$head);
+		$list = (C('SERVER_HOST')."IPP3Customers/IPP3CustomerUserRateUpdate",$data,$head);
 		$list = json_decode($list,true);
 		$this ->ajaxreturn($list);
 	
@@ -124,7 +124,7 @@ class BusinessController extends Base{
 			"Content-length:" . strlen( $data )
 		);
 		$url  = C('SERVER_HOST')."IPP3Customers/IPP3CustomerShopInsert";
-		$res  = http_request( $url, $data, $head );
+		$res  = ( $url, $data, $head );
 		$data = json_decode( $res, TRUE );
 		if($data['Code']==0){
 			
@@ -147,7 +147,7 @@ class BusinessController extends Base{
 			"Content-Type:application/json;charset=UTF-8",
 			"Content-length:" . strlen( $data )
 		);
-		$res  = http_request( $url, $data, $head );
+		$res  = ( $url, $data, $head );
 		$data = json_decode( $res, TRUE );
 		$this->ajaxReturn( $data );
 		
@@ -171,7 +171,7 @@ class BusinessController extends Base{
 			"Content-length:" . strlen( $data ),
 			//"X-Ywkj-Authentication:" . strlen( $data ),
 		);
-		$list = http_request( $url, $data, $head );
+		$list = ( $url, $data, $head );
         $list = json_decode( $list ,true);
 		return $list['model'][0]['SysNo'];
 	
@@ -194,7 +194,7 @@ class BusinessController extends Base{
             //"X-Ywkj-Authentication:" . strlen( $data ),
         );
 
-		$list = http_request( C('SERVER_HOST')."IPP3Customers/IPP3CustomerRoleInsert",$data, $head );
+		$list = ( C('SERVER_HOST')."IPP3Customers/IPP3CustomerRoleInsert",$data, $head );
 		$list = json_decode($list,true);
 	
 	}

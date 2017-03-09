@@ -32,7 +32,7 @@ class BaseController extends Controller{
 			$list =cookie('staff');
 			if(!$list)
 			{
-            $list = http_request( C('SERVER_HOST')."IPP3Customers/IPP3UserRoleList",$data, $head );
+            $list = ( C('SERVER_HOST')."IPP3Customers/IPP3UserRoleList",$data, $head );
 			$list = json_decode($list,true);
 			   foreach ($list as $row=>$val){
                 
@@ -82,7 +82,7 @@ class BaseController extends Controller{
 			$list =cookie('service');
 			if(!$list)
 			{
-            $list = http_request( C('SERVER_HOST')."IPP3Customers/IPP3SystemRoleList",$data, $head );
+            $list = ( C('SERVER_HOST')."IPP3Customers/IPP3SystemRoleList",$data, $head );
             $list = json_decode($list,true);
 			   foreach ($list['model'] as $row=>$val){
                 if(($val['URL'] != "/Order/platform_order_search")&&($val['URL'] != "/Order/order_search_alipay")&&($val['URL'] != "/OrderFund/orderfund?Top=1")&&($val['URL'] != "/OrderFund/orderfund")&&($val['URL'] != "/OrderExtend/order_extend")&&($val['URL'] != "/Refund/refund"))
@@ -124,7 +124,7 @@ class BaseController extends Controller{
 			$status =cookie('store');
 			if(!$status)
 			{
-            $list = http_request( C('SERVER_HOST')."IPP3Customers/IPP3CustomerRoleList",$data, $head );
+            $list = ( C('SERVER_HOST')."IPP3Customers/IPP3CustomerRoleList",$data, $head );
             $list = json_decode($list,true);
 			foreach ($list as $row=>$val){
             

@@ -1,6 +1,6 @@
 <?php
 
-function http_request( $url, $data = NULL, $head = NULL ){//15秒抛出
+function ( $url, $data = NULL, $head = NULL ){//15秒抛出
     $ch = curl_init();
     curl_setopt( $ch, CURLOPT_URL, $url );
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
@@ -18,7 +18,7 @@ function http_request( $url, $data = NULL, $head = NULL ){//15秒抛出
     return $output;
 }
 
-function http_request_notime( $url, $data = NULL, $head = NULL ){//不抛出
+function _notime( $url, $data = NULL, $head = NULL ){//不抛出
     $ch = curl_init();
     curl_setopt( $ch, CURLOPT_URL, $url );
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
@@ -102,7 +102,7 @@ function QueryCustomerSysNo($SysNO){
             //"X-Ywkj-Authentication:" . strlen( $data ),
         );
 
-        $list = http_request( $url, $data, $head );
+        $list = ( $url, $data, $head );
         $list = json_decode( $list );
 	return $list;
 
@@ -122,7 +122,7 @@ function QueryCustomerSysNo($SysNO){
 			"Content-length:" . strlen( $data ),
 			//"X-Ywkj-Authentication:" . strlen( $data ),
 		);
-		$list = http_request( $url, $data, $head );
+		$list = ( $url, $data, $head );
         $list = json_decode( $list ,true);
 		/*foreach ($list['model'] as $row=>$val){
 		$info['model'][$row]['SysNo']=$val['SysNo'];
@@ -152,7 +152,7 @@ function QueryCustomerSysNo($SysNO){
 			"Content-length:" . strlen( $data ),
 			//"X-Ywkj-Authentication:" . strlen( $data ),
 		);
-		$list = http_request( $url, $data, $head );
+		$list = ( $url, $data, $head );
         $list = json_decode( $list ,true);
 		/*foreach ($list['model'] as $row=>$val){
 		$info['model'][$row]['SysNo']=$val['SysNo'];
@@ -181,7 +181,7 @@ function QueryCustomerSysNo($SysNO){
 			"Content-length:" . strlen( $data ),
 			//"X-Ywkj-Authentication:" . strlen( $data ),
 		);
-		$list = http_request( $url, $data, $head );
+		$list = ( $url, $data, $head );
         $list = json_decode( $list ,true);
 		$list= explode(",",$list);
         return $list[2];
@@ -196,7 +196,7 @@ function QueryCustomerSysNo($SysNO){
  * @return type
  */
 function ihttp_get( $url ){
-    return ihttp_request( $url );
+    return i( $url );
 }
 
 /**
@@ -207,11 +207,11 @@ function ihttp_get( $url ){
  */
 function ihttp_post( $url, $data ){
     $headers = array( 'Content-Type' => 'application/x-www-form-urlencoded' );
-    return ihttp_request( $url, $data, $headers );
+    return i( $url, $data, $headers );
 }
 
 
-function ihttp_request( $url, $post = '', $extra = array(), $timeout = 60 ){
+function i( $url, $post = '', $extra = array(), $timeout = 60 ){
     $urlset = parse_url( $url );
     if( empty( $urlset['path'] ) ){
         $urlset['path'] = '/';
@@ -518,7 +518,7 @@ function QueryStaffInfo($id){//员工主键查询姓名
 		"Content-length:" . strlen( $data ),
 		"X-Ywkj-Authentication:" . strlen( $data)
 		);
-		$list = http_request(C('SERVER_HOST')."IPP3Customers/IPP3SystemUserList",$data,$head);
+		$list = (C('SERVER_HOST')."IPP3Customers/IPP3SystemUserList",$data,$head);
 		$list = json_decode($list,true);
 		return $list['model'][0]['DisplayName'];
 	
